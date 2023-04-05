@@ -1,16 +1,16 @@
-import BuyBtn from '@/components/general/BuyBtn'
 import Title from '@/components/general/Title'
 import Layout from '@/components/layout /Layout'
+import Payment from '@/components/products/Payment'
 import SingleProduct from '@/components/products/SingleProduct'
 import { supabase } from '@/lib/supabase'
 import Head from 'next/head'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
-export default function Home() {
+const Products = () => {
   const [products, setProducts] = useState([])
   const fetcher = async() => {
-    const {data, error} = await supabase.from('products').select().eq('featured', true)
+    const {data, error} = await supabase.from('products').select()
     if(error) console.log(error)
     setProducts(data)
   }
@@ -27,8 +27,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className='py-12'>
-      <Title text="Featured Products" />
-      <main className="flex flex-wrap gap-2 justify-center container ">
+      <Title text="All Products" />
+      <main className="flex flex-wrap gap-2 justify-center container">
         {products.map(item => {
           return (
             <Link key={item.id} href={`products/${item.id}`}>
@@ -38,6 +38,9 @@ export default function Home() {
         })}
       </main>
       </div>
+      <Payment />
     </Layout>
   )
 }
+
+export default Products
