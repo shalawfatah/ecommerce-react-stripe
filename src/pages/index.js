@@ -26,9 +26,9 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className='py-12'>
+      <div className='py-12 '>
       <Title text="Featured Products" />
-      <main className="flex flex-wrap gap-2 justify-center container ">
+      <main className="flex flex-wrap gap-2 justify-center container mx-auto">
         {products.map(item => {
           return (
             <Link key={item.id} href={`products/${item.id}`}>
