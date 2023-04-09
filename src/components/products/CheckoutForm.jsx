@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js'
-import { useRouter } from 'next/router'
 
 const CheckoutForm = () => {
 
